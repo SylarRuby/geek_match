@@ -1,0 +1,17 @@
+Email confirmation when sign up or change of email address:
+http://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise
+
+
+Verify new user's phone number by: External service?
+
+Show job title of Pro users who viewed their profile and total
+
+Show only basic plan users on community index - DONE
+
+Basic plan users must not see community
+
+Home page will have live feed of basic users activity
+
+Verified basic and pro users: pros must be not be agencies!
+
+Work desired: Full-time, Part-time, work experience or all

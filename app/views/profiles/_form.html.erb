@@ -1,0 +1,82 @@
+<%= form_for @profile, url: user_profile_path, :html => { :data => {:abide => ''}, :multipart => true } do |f| %>
+<div class="row">
+	<div class="name-field">
+		<%= f.label :first_name %>
+			<% if current_user.profile %>
+				<%= f.text_field :first_name, disabled: false, placeholder: "First name", required: true, pattern: "[a-zA-Z]+" %>
+				<small class="error">Name is required. Numbers not included.</small>
+		    <% else %>
+			    <%= f.text_field :first_name, placeholder: "First name", required: true, pattern: "[a-zA-Z]+" %>
+			    <small class="error">Name is required. Numbers not included.</small>
+			<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="">
+		<%= f.label :last_name %>
+			<% if current_user.profile %>
+				<%= f.text_field :last_name, disabled: false, placeholder: "Last name", required: true, pattern: "[a-zA-Z]+" %>
+				<small class="error">Name is required. Numbers not included.</small>
+			<% else %>
+				<%= f.text_field :last_name, placeholder: "Last name", required: true, pattern: "[a-zA-Z]+" %>
+				<small class="error">Name is required. Numbers not included.</small>
+			<% end %>
+
+	</div>	
+</div>
+<div class="row">
+	<div class="">
+		<%= f.label :avatar, 'Profile Picture' %>
+		<%= f.file_field :avatar, required: true %>
+	</div>
+<div class="row">
+	<div class="">
+		<%# To delete and rename to %>
+		<%= f.label :job_title %>
+		<%= f.select :job_title, ['Developer', 'Entrepreneur', 'Investor', 'CEO'] %>
+	</div>	
+</div>
+<div class="row">
+	<div class="number-field">
+		<% if current_user.plan_id == 1 %>
+			<%= f.label :phone_number, 'Phone' %>
+			<%= f.text_field :phone_number, placeholder: "Format eg: 07555555555 or 0155555555", required: true, pattern: "(?:01|07)\\s?\\d{2}\\s?\\d{7}" %>
+			<small class="error">Numbers only.</small>
+		<% else %>
+			<%= f.label :phone_number, 'Phone' %>
+			<%= f.text_field :phone_number, placeholder: "Format eg: 07555555555 or 0155555555", required: true, pattern: "(?:01|07)\\s?\\d{2}\\s?\\d{7}" %>
+		<% end %>		
+	</div>	
+</div>
+<div class="row">
+	<div class="email-field">
+		<% if current_user.plan_id == 1 %>
+			<%= f.label :contact_email, 'Email' %>
+			<%= f.email_field :contact_email, placeholder: "Only you and employers will see this ;)", required: true %>
+			<small class="error">An email address is required.</small>
+		<% else %>
+			<%= f.label :contact_email, 'Email' %>
+			<%= f.email_field :contact_email, placeholder: "Email address", required: true %>
+			<small class="error">An email address is required.</small>	
+		<% end %>
+	</div>	
+</div>
+<div class="row">
+	<div class="name-field">
+		<%= f.label :description, 'Description' %>
+		<%= f.text_area :description, placeholder: "Say something about you in few words", required: true %>
+		<small class="error">You need to say something.</small>	
+	</div>	
+</div>
+<%= render partial: 'student_tuition' %>
+<div class="row">
+	<div class="">
+		<%# if user has a profile or not %>
+		<% if current_user.profile %> 
+			<%= f.submit  "Update Profile", class: "button radius" %>
+		<% else %>
+			<%= f.submit  "Create Profile", class: "button radius" %>
+		<% end %>
+	</div>
+</div>	
+<% end %>

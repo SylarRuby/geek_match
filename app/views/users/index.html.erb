@@ -1,0 +1,29 @@
+<div class="small-9 small-centered columns">
+<% @users.each do |user| %>
+	<%# We are saying if the current user has a profile then they can view this page %>
+	<% if current_user.profile %>
+		<%# Only show basic users %>
+		<% if user.plan_id == 1 %>
+				<ul class="no-bullet">
+					<li>
+						<div class="panel row radius <%= cycle('light-blue-bg', 'white-bg') %> ">
+							<div class="medium-3 columns text-center">
+								<% if user.profile.avatar %>
+									<%= link_to user do %>
+										<%= image_tag user.profile.avatar.url(:thumb) %>
+									<% end %>
+								<% end %>
+							</div>
+							<div class="medium-9 columns">
+								<%= link_to user do %>
+									<h3><%= user.profile.first_name %> <%= user.profile.last_name %></h3>
+								<% end %>
+								<p class="strong"><%= user.profile.job_title %></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+		<% end %>
+	<% end %>
+<% end %>
+</div>

@@ -1,0 +1,13 @@
+<div class="large-6 small-centered columns">
+	<% if params[:plan] == '2'%> 
+	  <%= render partial: 'pro_form' %>
+	<% else %>
+	  <%= render partial: 'basic_form' %>
+	<% end %>
+	<p> Already a member? Then  
+	<%= render "devise/shared/links" %></p>
+</div>
+
+
+
+

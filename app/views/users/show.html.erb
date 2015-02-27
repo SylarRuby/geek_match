@@ -1,0 +1,13 @@
+<%= image_tag @user.profile.avatar.url(:thumb) %><br/>
+<%= @user.profile.first_name %> <%= @user.profile.last_name %><br/>
+<%= @user.profile.job_title %><br/>
+<% if @user == current_user || current_user.plan_id == 2 %>
+	<%= @user.profile.phone_number %><br/>
+	<%= @user.profile.contact_email %><br/>
+<% end %>
+<%= @user.profile.description %><br />
+<% if current_user.plan_id == 2 %>
+<%= @pro_plan.name.capitalize %>
+<% else %>
+<%= @basic_plan.name.capitalize %>
+<% end %>

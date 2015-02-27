@@ -1,0 +1,29 @@
+<div class="small-4 small-centered columns">
+	<div class="panel">
+		<%= form_for @contact do |f| %>
+		<div class="row">
+			<div class="">
+				<%= f.label :name %>
+				<%= f.text_field :name, placeholder: "May I know your name?" %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="">
+				<%= f.label :email %>
+				<%= f.email_field :email, placeholder: "john.doe@mysite.com" %>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="">
+				<%= f.label :comments %>
+				<%= f.text_area :comments, placeholder: "What's on your mind?" %>
+			</div>
+		</div>
+		<div class="row">
+		    <div class=""><%= f.submit  "Send", class: "button radius", title: "Check your comments before clicking this button ;)", data: {tooltip: true} %></div>
+		 </div>			
+		<% end %>
+</div>
+</div>
+<hr>
+<%= @contact_list.inspect %>

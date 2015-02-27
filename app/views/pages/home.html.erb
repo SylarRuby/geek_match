@@ -1,0 +1,48 @@
+<div class="panel radius small-11 small-centered columns">
+	<div class="text-center">
+	  <h1>Welcome to Geek Match</h1>
+      <h5>A membership site where entrepreneurs can meet developers <span class="round alert label">Geeks</span.</h5>
+	</div>
+</div>
+
+<% if user_signed_in? # the devise way. 'current_user' could be used %>		 
+	<% if current_user.profile %>
+		<dl class="sub-nav">
+		  <dt>Filter:</dt>
+		  <dd class="active"><a href="#">All</a></dd>
+		  <dd><%= link_to 'Edit your profile', edit_user_profile_path(current_user) %></dd>
+		  <dd><%= link_to 'View your profile', user_path(current_user) %></dd>
+		  <dd class="hide-for-small-only"><a href="#">Suspended</a></dd>
+		</dl>
+
+		
+	<% else %>
+		<%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>	
+	<% end %>
+	<% if current_user.plan_id == 2 %>
+		<div class="panel radius small-11 small-centered columns">	
+			<div class="text-center">
+			  <h1>The Geeks Lists</h1>
+			  <p> <%= link_to 'Geeks Lists', users_path %> </p>
+			</div>		
+	    </div>
+    <% end %>
+<% else %>
+	<div class="large-6 columns">
+	<ul class="pricing-table">
+	<li class="title">Geeks Registration</li>
+	<li class="price">&pound;0</li>
+	<li class="description">Meet and get in contact entrepreneurs and win jobs / businesses.</li>
+	<div class="cta-button"> <%= link_to "Sign up free", new_user_registration_path(plan: @basic_plan.id), class: "button radius" %> </div>
+	</ul>
+	</div>
+
+	<div class="large-6 columns">
+	<ul class="pricing-table">
+	<li class="title">Entrepreneurs Registration</li>
+	<li class="price">&pound;10</li>
+	<li class="description">Find that talented Geeks to invest in or to employ.</li>
+	<div class="cta-button"> <%= link_to "Sign up Pro", new_user_registration_path(plan: @pro_plan.id), class: "button radius success" %> </div>
+	</ul>
+	</div>
+<% end %>

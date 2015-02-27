@@ -1,0 +1,44 @@
+<%= form_for @profile, url: user_profile_path, :html => { :data => {:abide => ''}, :multipart => true } do |f| %>
+	<% if current_user.plan_id == 1 %>
+		<div class="row">
+			<div class="">
+				<%= f.label :first_name, 'Tuition' %>
+				<%= f.select :first_name, ['Birmingham College', 'Birmingham University', 'Walsall College', 'University Of Wolverhampton', 'Wolverhampton College'], :include_blank => 'Select an option:' %>
+			</div>	
+	    </div>
+	 	<div class="row">
+			<div class="">
+				<%= f.label :first_name, 'Department' %>
+				<%= f.select :first_name, ['Business & Finance', 'Construction', 'Electronics', 'Fashion & Textiles', 'Hospitality & Catering', 'Logistics & Warehouse', 'Music', 'IT - Support', 'Web Development', 'Software Development'], :include_blank => 'Select an option:' %>
+			</div>	
+	    </div>
+	 	<div class="row">
+			<div class="">
+				<%= f.label :first_name, 'Work Experience' %>
+				<%= f.select :first_name, ['Yes', 'No', 'Little', 'Give me experience!'], :include_blank => 'Select an option:' %>
+			</div>	
+	    </div>
+		<div class="row">
+			<div class="">
+				<%= f.label :first_name, 'Highest Qualification' %>
+				<%= f.select :first_name, ['GCSC', 'A Levels', 'NVQs', 'HNC', 'HND', 'DipHE', 'Diploma', 'BA Hons', 'BSc Hons', 'MA', 'MSc', 'BMA', 'MPhil', 'MEng', 'BTEC', 'City & Guilds', 'PhD', 'DPhil', 'EdD', 'DClinPsy'], :include_blank => 'Select highest only:' %>
+			</div>	
+	    </div>
+	 	<div class="row">
+	 		<ul class="inline-list">
+				
+				<%# Need to and a Zurb Foundation's check boxes here %>
+				<li><%= f.label :first_name, 'PHP' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'HTML' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'CSS' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'MySQL' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'Postgres' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'Ruby' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'Meteor' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'JavaScript' %> <%= f.check_box :first_name %></li>
+				<li><%= f.label :first_name, 'Python' %> <%= f.check_box :first_name %></li>
+				
+			</ul>	
+	    </div>	    	    
+	<% end %>
+<% end %>
